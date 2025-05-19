@@ -1,0 +1,25 @@
+<robot name="test01">
+
+    <link name="base_link">
+
+        <visual>
+
+            <geometry>
+
+                <!-- <box size="0.5 0.2 0.1" /> -->
+
+                <cylinder radius="0.5" length="0.1" />
+
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="0.5 0 0" />
+
+
+
+
+        </visual>
+
+    </link>
+
+
+</robot>
