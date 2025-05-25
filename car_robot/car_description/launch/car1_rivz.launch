@@ -2,7 +2,13 @@
 
 	<!-- <param name="robot_description" textfile="$(find car_description)/urdf/car1.urdf" /> -->
 
-	<param name="robot_description" textfile="$(find car_description)/urdf/test02.urdf" />
+	<!-- <param name="robot_description" textfile="$(find car_description)/urdf/test02.urdf" /> -->
+
+	<!-- <param name="robot_description" textfile="$(find car_description)/urdf/car_test.urdf" /> -->
+
+	<!-- <param name="robot_description" command="$(find xacro)/xacro $(find car_description)/urdf/new_car_1.xacro" /> -->
+
+	<param name="robot_description" command="$(find xacro)/xacro $(find car_description)/urdf/car_sum_add.xacro" />
 	
 	<node pkg="rviz" name="rviz" type="rviz" args="-d $(find car_description)/config/show_car.rviz" />
 
@@ -11,5 +17,11 @@
 
 	<node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui" />
 
+	<node pkg="arbotix_python" type="arbotix_driver" name="arbotix" output="screen">
+
+		<rosparam file="$(find car_description)/config/car_arbotix.yaml" command="load" />
+		<param name="sim" value="true" />
+
+	</node>
 
 </launch>

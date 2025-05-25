@@ -1,0 +1,179 @@
+<robot name="car_test">
+
+    <link name="base_footprint">
+
+        <visual>
+
+            <geometry>
+
+                <sphere radius="0.0001" />
+
+            </geometry>
+
+        </visual>
+
+    </link>
+
+    <link name="base_link">
+
+        <visual>
+
+            <geometry>
+
+                <cylinder radius="0.1" length="0.08" />
+
+            </geometry>
+
+            <material name="yellow">
+
+                <color rgba="0.8 0.3 0.1 0.5" /> 
+
+            </material>
+
+        </visual>
+
+    </link>
+
+    <joint name="base_link2base_footprint" type="fixed" >
+
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 0.055" />
+
+    </joint>
+
+
+<!-- 添加左驱动轮、想象成侧翻的圆柱 -->
+    <link name="left_wheel">
+
+        <visual>
+
+            <geometry>
+
+                <cylinder radius="0.0325" length="0.015" />
+
+            </geometry>
+
+            <origin rpy="1.5705 0 0" />
+
+            <material name="black">
+
+                <color rgba="0 0 0 0.5" />
+
+            </material>
+
+        </visual>
+
+    </link>
+
+<!-- 左驱动轮joint -->
+    <joint name="left_wheel2base_link" type="continuous">
+
+        <parent link="base_link" />
+        <child link="left_wheel" />
+        <origin xyz="0 0.1 -0.0225" />
+        <axis xyz="0 1 0" />
+
+    </joint>
+
+<!-- 添加右驱动轮、想象成侧翻的圆柱 -->
+    <link name="right_wheel">
+
+        <visual>
+
+            <geometry>
+
+                <cylinder radius="0.0325" length="0.015" />
+
+            </geometry>
+
+            <origin rpy="1.5705 0 0" />
+
+            <material name="black">
+
+                <color rgba="0 0 0 0.5" />
+
+            </material>
+
+        </visual>
+
+    </link>
+
+<!-- 右驱动轮joint -->
+    <joint name="right_wheel2base_link" type="continuous">
+
+        <parent link="base_link" />
+        <child link="right_wheel" />
+        <origin xyz="0 -0.1 -0.0225" />
+        <axis xyz="0 1 0" />
+
+    </joint>
+
+
+<!-- 添加前万向轮 -->
+    <link name="front_wheel">
+
+        <visual>
+
+            <geometry>
+
+                <sphere radius="0.0075" />
+
+            </geometry>
+
+            <material name="black">
+
+                <color rgba="0 0 0 0.5" />
+
+            </material>
+
+        </visual>
+
+    </link>
+<!-- 添加前万向轮的jonit -->
+    <joint name="front_wheel2base_link" type="continuous">
+
+        <parent link="base_link" />
+        <child link="front_wheel" />
+        <origin xyz="0.0925 0 -0.0475"  />
+        <axis xyz="1 1 1" />
+
+    </joint>
+
+
+<!-- 添加后万向轮 -->
+    <link name="back_wheel">
+
+        <visual>
+
+            <geometry>
+
+                <sphere radius="0.0075" />
+
+            </geometry>
+
+            <material name="black">
+
+                <color rgba="0 0 0 0.5" />
+
+            </material>
+
+        </visual>
+
+    </link>
+<!-- 添加前后向轮的jonit -->
+    <joint name="back_wheel2base_link" type="continuous">
+
+        <parent link="base_link" />
+        <child link="back_wheel" />
+        <origin xyz="-0.0925 0 -0.0475"  />
+        <axis xyz="1 1 1" />
+
+    </joint>
+
+
+
+
+    
+
+</robot>
